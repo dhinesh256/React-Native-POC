@@ -11,24 +11,28 @@ function TextBoxAmt() {
 
     const checkAndSet = (amt:string) => {
 
-      
       const Amt = parseInt(amt)
 
-      if(Amt<=0){
+      if(isNaN(Amt)){
         setIsValid(false)
-        setErrorMsg( "Enter an Amount")
+        setErrorMsg("Enter an Amount")
       }
-      else if(Amt>7500){
-        setIsValid(false)
-        setErrorMsg("Your sending limit is 7,500 CAD")
+      else{  
+        if(Amt<=0){
+          setIsValid(false)
+          setErrorMsg( "Amount must be greater than 1.00 CAD")
+        }
+        else if(Amt>7500){
+          setIsValid(false)
+          setErrorMsg("Your sending limit is 7,500 CAD")
+        }
+        else{
+          setIsValid(true)
+          setErrorMsg("")
+          setAmount(Amt)
+        }
       }
-      else{
-        setIsValid(true)
-        setErrorMsg("")
-        setAmount(Amt)
-      }
-
-    }
+  }
 
     
 
@@ -50,6 +54,7 @@ function TextBoxAmt() {
         <Text style={styles.errorText}>
           {errorMsg}
         </Text>
+        
     </View>
     </SafeAreaView>
     
@@ -61,6 +66,7 @@ const styles = StyleSheet.create({
     container: {
       marginTop:40,
       marginBottom:40,
+      
     },
     AmountSection: {
         flexDirection: 'row',
@@ -69,6 +75,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         marginLeft:40,
         width:"80%",
+        borderRadius:15
     },
     ValidAmountSelction:{
         borderBottomColor:"#ccc6c6",
@@ -82,7 +89,7 @@ const styles = StyleSheet.create({
       color:'black',
       fontSize:25,
       fontWeight:'600',
-      width:"60%"
+      width:"50%"
     },
     text:{
       backgroundColor:'#d6d5d2',
