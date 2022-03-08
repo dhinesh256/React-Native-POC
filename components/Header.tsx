@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     headerBar:{
         flexDirection:"row",
         backgroundColor:"black",
-        height: "7%",
+        height: "100%",
+        width:"100%",
         justifyContent: "space-between"
     },
     logo:{

@@ -65,7 +65,7 @@ function TextBoxAmt() {
 const styles = StyleSheet.create({
     container: {
       marginTop:40,
-      marginBottom:40,
+      marginBottom:10,
       
     },
     AmountSection: {

@@ -2,22 +2,22 @@ import { View, Text, Pressable, StyleSheet} from 'react-native'
 import React  from 'react'
 
 type buttonProps = {
+    text? :String;
     name : String;
     navigation? : any ;
 }
 //:React.FC<buttonProps>
 const ButtonComp = (props:buttonProps) => {
 
-    const {name , navigation} = props;
+    const {name , navigation , text} = props;
     return(
     <View style={styles.container}>
       <Pressable
           style={styles.pressable}
-        //onPress={() => navigation.navigate(name)}
-          onPress={()=>alert("clicked")}
+          onPress={() => navigation.navigate(name)}
         >
           <Text style={styles.text}>
-            {`${name}`}
+            {`${text}`}
           </Text>
 
         </Pressable>
@@ -49,6 +49,4 @@ const styles = StyleSheet.create({
 
 export default ButtonComp;
 
-function alert(arg0: string): void {
-    console.log(arg0);
-}
+
