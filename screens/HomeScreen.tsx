@@ -1,27 +1,31 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {useNavigation} from '@react-navigation/core'
+import { RootStackParams } from "../App";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Header from "../components/Header";
 import ModelComp from "../components/ModalComp";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 
-const HomeScreen: React.FC = ()=>{
+const HomeScreen = ()=>{
+
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>()
     return(
         <View>
-            <Header/>
             <View style={styles.homePage}>
                 <Text style={styles.mainText}>Send money your way with Western union</Text>
                 <Text style={styles.subText}>Send money to over 200 countries and {'\n'}territories5 around the world online, in perosn {'\n'}
                     and on the go with Western Union money  transfer app.
                 </Text>
-                <ModelComp/>
+                {/* <ModelComp/> */}
                 {/* <TextInput style={styles.input1}>
                     <Text>Send to</Text>
                 </TextInput>
                 <TextInput style={styles.input2}>
                     <Text>Send amount</Text>
                 </TextInput> */}
-                <TouchableOpacity style={styles.sendBtn}>
+                <TouchableOpacity style={styles.sendBtn} onPress={()=>{navigation.navigate("CountrySelectionScreen")}}>
                     <Text style={styles.btnText}>Send Money Now</Text>
                 </TouchableOpacity>
                 <View style={styles.textContainer}>

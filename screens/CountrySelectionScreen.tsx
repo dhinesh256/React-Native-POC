@@ -6,7 +6,7 @@ import CountrySelection from '../components/CountrySelection'
 const CountrySelectionScreen = () => {
   return (
     <View>
-      <Header/>
+      {/* <Header/> */}
       <CountrySelection/>
     </View>
   )
