@@ -10,43 +10,42 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
-  StatusBar,
   StyleSheet,
-  Text,
-  View,
 } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
-import ButtonComp from './components/ButtonComp';
+import Test from './components/Test'
 import CountrySelection from './components/CountrySelection';
 import EnterAmountScreen from './screens/EnterAmountScreen';
-// import Test from './components/Test';
-import TextBoxAmt from './components/TextBoxAmt';
-import ModelComp from './components/ModalComp';
+import EstimateDetails from './screens/EstimateDetails';
 import HomeScreen from './screens/HomeScreen';
 import Header from './components/Header';
 
 export type RootStackParams = {
   Home:undefined;
   CountrySelectionScreen:undefined;
-  EnterAmountScreen:undefined
+  EnterAmountScreen:undefined;
+  EstimateDetailsScreen:undefined;
 }
 
 const RootStack = createNativeStackNavigator<RootStackParams>();
 
 const App = () => {
 
+  return (<Test/>)
+
+  // return(<Header/>)
+
   return (
     <NavigationContainer>
-         <RootStack.Navigator >
-
-          <RootStack.Screen name="Home" component={HomeScreen}  options={{ headerTitle: () => <Header/> ,headerBackTitleVisible: false}} />
-          <RootStack.Screen name="CountrySelectionScreen" component={CountrySelection} options={{ headerTitle: () => <Header/> }}/>
+         <RootStack.Navigator screenOptions={{ header: () => {return (<Header/>);}}} >
+      
+          <RootStack.Screen name="Home" component={HomeScreen}   />
+          <RootStack.Screen name="CountrySelectionScreen" component={CountrySelection} />
           <RootStack.Screen name='EnterAmountScreen' component={EnterAmountScreen}/>
+          <RootStack.Screen name='EstimateDetailsScreen' component={EstimateDetails} />
 
          </RootStack.Navigator>
     </NavigationContainer> 

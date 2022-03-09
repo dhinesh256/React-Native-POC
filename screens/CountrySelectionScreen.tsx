@@ -1,13 +1,17 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Header from '../components/Header'
+import { useNavigation } from '@react-navigation/core'
 import CountrySelection from '../components/CountrySelection'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RootStackParams } from '../App'
 
 const CountrySelectionScreen = () => {
+
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>()
+
   return (
     <View>
-      {/* <Header/> */}
-      <CountrySelection/>
+      <CountrySelection navigation={navigation}/>
     </View>
   )
 }

@@ -1,10 +1,11 @@
-import { View, Text, SafeAreaView, StyleSheet, FlatList, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput ,Modal} from 'react-native'
 import React , {useState} from 'react'
 import CountryFlag from "react-native-country-flag";
 import  Icon  from 'react-native-vector-icons/FontAwesome';
 
 import CountryData from '../data/countryDetails'
 import ButtonComp from './ButtonComp';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 type countryProps = {
         name: string;
@@ -14,15 +15,36 @@ type countryProps = {
         selected:boolean;
 }
 
-const CountrySelection = () => {
+type Props = {
+    navigation:any;
+}
+
+const CountrySelection = ({navigation}:Props) => {
+
 
     const [searchInput, setSearchInput] = useState("")
+
+    const [isEmpty, setisEmpty] = useState(true)
 
     const [FilteredData, setFilteredData] = useState(CountryData)
 
     const [extraData, setExtraData] = useState(false)
 
     const [displayButton, setDisplayButton] = useState(false)
+
+    const buttonPress = (navigation:any,name:String) => {
+        setDisplayButton(false)
+        navigation.navigate(name)
+    }
+
+    const displayView = () => {
+        if(searchInput===""){
+            setisEmpty(true)
+        }
+        else{
+            setisEmpty(false)
+        }
+    }
     
     const searchFilter = (text:string) => {
         if(text){
@@ -42,11 +64,7 @@ const CountrySelection = () => {
 
     const changeSelected = (selected:countryProps) => {
 
-        var Checked= new Array(9).fill({
-            status:false,
-            StylesOfContainer:{},
-        });
-
+        
         const selectedData = FilteredData
         selectedData.map((data,index) => {
             if(data.iso2 === selected.iso2) {
@@ -72,6 +90,7 @@ const CountrySelection = () => {
                 
                 changeSelected(item)
                 setExtraData(!extraData)
+                setDisplayButton(true)
                 
                 // console.log(newD)
                 // setFilteredData(newD)
@@ -83,7 +102,7 @@ const CountrySelection = () => {
             style={[item.selected ? styles.container : {}]} 
         >
         <View style={styles.nationsContainer}>
-            <CountryFlag isoCode={item.iso2} size={25} style={styles.flag}/>
+            <CountryFlag isoCode={item.iso2} size={25} style={styles.flag} />
             
             <Text style={styles.nationName}> {`${item.name}`} </Text>
 
@@ -102,37 +121,52 @@ const CountrySelection = () => {
     }
 
   return (
-      <SafeAreaView style={styles.sView}>
+      <View style={styles.sView}>
           <View >
-              <View>
                     <View style={styles.searchBarContainer}>
                             <TextInput
                             style={styles.searchBar}
-                            // value= {searchInput}
+                            value= {searchInput}
                             placeholder='search here'
                             onChangeText={(text) => searchFilter(text)}
-                            onFocus={()=>setDisplayButton(!displayButton)}
                             />
                             <Icon name="search" size={25} color="blue" />
 
                     </View>
-              </View>
-              
+
+              <Modal
+                animationType="fade"
+                transparent={true}
+                visible={displayButton}
+                onRequestClose={() => {
+                    setDisplayButton(!displayButton)
+                }}>
+                    
+                            <View style={styles.bottomView}>
+                            <ButtonComp name={"EnterAmountScreen"} text={"continue"} navigation={navigation} 
+                            onPress={()=>buttonPress(navigation,"EnterAmountScreen")}/>
+                            </View>
+              </Modal>
+              <Text>{displayButton?"hello":"bye"}</Text>
               <FlatList
               data={FilteredData}
               keyExtractor={(item,index) => index.toString()}
               ItemSeparatorComponent = {ItemSeperatorView}
               renderItem={({item}) => renderItemView(item)}
-              style={{margin:10}}
+              style={{margin:10,marginBottom:10}}
               extraData={extraData}
+              
               />
 
-              {displayButton ? <ButtonComp name={"continue"}/> : <></>}
-
+              {/* {displayButton ? 
+                 <View style={styles.bottomView}>
+                 <ButtonComp name={"EnterAmountScreen"} text={"continue"} navigation={navigation} onPress={()=>buttonPress(navigation,"EnterAmountScreen")}/>               
+                 </View>
+                : <></>
+                } */}
               
           </View>
-      </SafeAreaView>
-    
+      </View>
   )
 }
 
@@ -141,6 +175,8 @@ export default CountrySelection;
 const styles = StyleSheet.create({
     sView:{
         // flex:1,
+        paddingBottom:10
+    
     },
     container:{
         backgroundColor:'#8bd683',
@@ -176,7 +212,15 @@ const styles = StyleSheet.create({
         color:'black',
         fontSize:15,
         fontWeight:'600',
-        
     },
+    bottomView: {
+        width: '100%',
+        height: 80,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        
+        position: 'absolute', 
+        bottom: 0, 
+      }
     
 })

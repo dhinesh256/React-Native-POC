@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View , TextInput,FlatList ,TouchableOpacity, KeyboardAvoidingView,TouchableWithoutFeedback , Keyboard} from "react-native";
+import { Alert, Modal, StyleSheet, Text, Pressable, View , TextInput,FlatList ,TouchableOpacity, TouchableWithoutFeedback,KeyboardAvoidingView, Keyboard} from "react-native";
 import  Icon  from 'react-native-vector-icons/FontAwesome';
 import CountryFlag from "react-native-country-flag";
 import CountryData from '../data/countryDetails'
@@ -28,12 +28,6 @@ const ModelComp = () => {
     iso2:""
   })
 
-
-  const chevronHandler = () => {
-    
-      setModalVisible(!modalVisible)
-   
-  }
 
   const changeSelected = (selected:countryProps) => {
 
@@ -108,41 +102,23 @@ const ItemSeperatorView = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          // Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
         }}
       >
-        {/* <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
-          </View>
-        </View> */}
-        <View style={styles.centeredView}>
-        <FlatList
-              data={FilteredData}
-              keyExtractor={(item,index) => index.toString()}
-              ItemSeparatorComponent = {ItemSeperatorView}
-              renderItem={({item}) => renderItemView(item)}
-              style={{marginTop:340,elevation:3,margin:10,backgroundColor:'#fff',height:"40%"}}
-              extraData={extraData}
-        />
-          
-        </View>
-        
+        <TouchableWithoutFeedback>
+              <View style={styles.centeredView}>
+              <FlatList
+                    data={FilteredData}
+                    keyExtractor={(item,index) => index.toString()}
+                    ItemSeparatorComponent = {ItemSeperatorView}
+                    renderItem={({item}) => renderItemView(item)}
+                    style={{marginTop:340,elevation:3,margin:10,backgroundColor:'#fff',height:"40%"}}
+                    extraData={extraData}
+              />
+              </View>
+        </TouchableWithoutFeedback>
         
       </Modal>
-      {/* <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
-      >
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable> */}
           <View>
               <View style={styles.searchBarContainer}>
 
@@ -159,9 +135,9 @@ const ItemSeperatorView = () => {
                     }
                     }
                     />
-                    <Pressable onPress={chevronHandler} style={{padding:5,marginRight:15}}>
-                      {modalVisible ?  <Icon name="chevron-up" size={20} color="blue"  /> :
-                        <Icon name="chevron-down" size={20} color="blue"/>}
+                    <Pressable style={{padding:5,marginRight:15}}>
+                      {modalVisible ?  <Icon name="chevron-up" size={20} color="blue" onPress={() => setModalVisible(false)} /> :
+                        <Icon name="chevron-down" size={20} color="blue"  onPress={() => setModalVisible(true)} />}
                     </Pressable>
 
               </View>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import MenuModal from './MenuModal';
 
 
 
@@ -8,7 +9,8 @@ const Header: React.FC = () => {
     return (
             <View style={styles.headerBar}>
                 <Text style={styles.logo}>\\WU</Text>
-                <Icon name='bars' style={styles.barIcon} />
+                {/* <Icon name='bars' style={styles.barIcon} /> */}
+                <MenuModal/>
             </View>
     )
 };
@@ -19,8 +21,6 @@ const styles = StyleSheet.create({
     headerBar:{
         flexDirection:"row",
         backgroundColor:"black",
-        height: "100%",
-        width:"100%",
         justifyContent: "space-between"
     },
     logo:{

@@ -2,19 +2,20 @@ import { View, Text, Pressable, StyleSheet} from 'react-native'
 import React  from 'react'
 
 type buttonProps = {
-    text? :String;
-    name : String;
+    text :String;
+    name? : String;
     navigation? : any ;
+    onPress? : () => void;
 }
 //:React.FC<buttonProps>
 const ButtonComp = (props:buttonProps) => {
 
-    const {name , navigation , text} = props;
+    const {name , navigation , text , onPress} = props;
     return(
     <View style={styles.container}>
       <Pressable
           style={styles.pressable}
-          onPress={() => navigation.navigate(name)}
+          onPress={onPress? onPress : () => navigation.navigate(name)}
         >
           <Text style={styles.text}>
             {`${text}`}
@@ -40,8 +41,8 @@ const styles = StyleSheet.create({
     width:"80%",
   },
   text: {
-    fontSize: 25,
-    fontWeight: '600',
+    fontSize: 20,
+    fontWeight: '500',
     color: "#000",
   },
 

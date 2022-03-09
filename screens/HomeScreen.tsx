@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View ,KeyboardAvoidingView} from 'react-native'
 import {useNavigation} from '@react-navigation/core'
 import { RootStackParams } from "../App";
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -12,13 +12,14 @@ const HomeScreen = ()=>{
 
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>()
     return(
+        <KeyboardAvoidingView>
         <View>
             <View style={styles.homePage}>
                 <Text style={styles.mainText}>Send money your way with Western union</Text>
                 <Text style={styles.subText}>Send money to over 200 countries and {'\n'}territories5 around the world online, in perosn {'\n'}
                     and on the go with Western Union money  transfer app.
                 </Text>
-                {/* <ModelComp/> */}
+                <ModelComp/>
                 {/* <TextInput style={styles.input1}>
                     <Text>Send to</Text>
                 </TextInput>
@@ -28,14 +29,17 @@ const HomeScreen = ()=>{
                 <TouchableOpacity style={styles.sendBtn} onPress={()=>{navigation.navigate("CountrySelectionScreen")}}>
                     <Text style={styles.btnText}>Send Money Now</Text>
                 </TouchableOpacity>
+                
                 <View style={styles.textContainer}>
-                    <Icon name="shield" style={styles.shieldIcon}/>
+                    <Icon name="shield" style={styles.shieldIcon} />
                     <Text style={styles.infoText1}>Be informed. Be aware.  
                         <Text style={styles.infoText2}> Protect yourself {'\n'}from fraud</Text>
                     </Text>
                 </View>
+               
             </View>
         </View>
+        </KeyboardAvoidingView>
     )
 }
 
@@ -80,8 +84,9 @@ const styles = StyleSheet.create({
         alignSelf:"flex-start"
     },
     btnText:{
+        textAlign:"center",
         color:"#ffdd00",
-        padding:18,
+        padding:15,
         fontWeight:"bold",
         fontSize:14
     },
