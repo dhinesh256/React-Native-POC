@@ -22,6 +22,7 @@ import EnterAmountScreen from './screens/EnterAmountScreen';
 import EstimateDetails from './screens/EstimateDetails';
 import HomeScreen from './screens/HomeScreen';
 import Header from './components/Header';
+import AnimatedListExample from './AnimatedList';
 
 export type RootStackParams = {
   Home:undefined;
@@ -34,7 +35,11 @@ const RootStack = createNativeStackNavigator<RootStackParams>();
 
 const App = () => {
 
-  return (<Test/>)
+
+  return (<AnimatedListExample/>)
+
+  return (<EstimateDetails/>)
+
 
   // return(<Header/>)
 

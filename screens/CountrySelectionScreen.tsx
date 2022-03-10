@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View , Dimensions } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/core'
 import CountrySelection from '../components/CountrySelection'
@@ -9,9 +9,16 @@ const CountrySelectionScreen = () => {
 
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>()
 
+  const windowWidth = Dimensions.get('window').width;
+  const windowHeight = Dimensions.get('window').height;
+
+  
+
   return (
-    <View>
+    <View style={{width:windowWidth , height:windowHeight}}>
+
       <CountrySelection navigation={navigation}/>
+      
     </View>
   )
 }

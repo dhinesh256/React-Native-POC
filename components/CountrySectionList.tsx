@@ -14,39 +14,49 @@ type countryProps = {
         selected:boolean;
 }
 
-const CountrySelection = () => {
+type Props = {
+    navigation:any;
+}
 
-    const [searchInput, setSearchInput] = useState("")
+const CountrySelectionList = ({navigation}:Props) => {
+
 
     const [FilteredData, setFilteredData] = useState(CountryData)
 
+    const [displayButton, setDisplayButton] = useState(false)
+
+    const buttonPress = (navigation:any,name:String) => {
+        setDisplayButton(false)
+        navigation.navigate(name)
+    }
     // const [selected, setSelected] = useState("IN")
 
-    const searchFilter = (text:string) => {
-        if(text){
-            const newData = CountryData.filter(({data},index) => {
-                const itemValue = data[index].name.toUpperCase() 
-                const textValue = text.toUpperCase()
-                return itemValue.indexOf(textValue) > -1 
-            })
-            setFilteredData(newData)
-            setSearchInput(text)
-        }
-        else{
-            setFilteredData(CountryData)
-            setSearchInput(text)
-        }
-    }
+    // const searchFilter = (text:string) => {
+    //     if(text){
+    //         const newData = CountryData.filter(({data},index) => {
+    //             const itemValue = data[index].name.toUpperCase() 
+    //             const textValue = text.toUpperCase()
+    //             return itemValue.indexOf(textValue) > -1 
+    //         })
+    //         setFilteredData(newData)
+    //         setSearchInput(text)
+    //     }
+    //     else{
+    //         setFilteredData(CountryData)
+    //         setSearchInput(text)
+    //     }
+    // }
 
     const changeSelected = (selected:countryProps) => {
 
         const selectedData = FilteredData
         selectedData.map(({data},index) => {
-            data[index].iso2 === selected.iso2 ? data[index].selected==true : data[index].selected==false
+            data[index].iso2 === selected.iso2 ? 
+            data[index].selected==true : 
+            data[index].selected==false
         })
-        console.log(selectedData)
-        // setFilteredData(selectedData)
-        return selectedData;
+        // console.log(selectedData)
+        setFilteredData(selectedData)
 
         // console.log(selected)
 
@@ -57,7 +67,8 @@ const CountrySelection = () => {
             onPress={()=>{
                 // setFilteredData(FilteredData)
                 // item.selected = true
-                
+                changeSelected(item)
+                setDisplayButton(true)
                 
                 // const newD = changeSelected(item)
                 // console.log(newD)
@@ -90,11 +101,14 @@ const CountrySelection = () => {
   return (
       <SafeAreaView style={styles.sView}>
           <View>
+            {/* <View style={styles.searchBarContainer}>
               <TextInput
               style={styles.searchBar}
               value= {searchInput}
               placeholder='search here'
               onChangeText={(text) => searchFilter(text)}/>
+             <Icon name="search" size={25} color="blue" />
+            </View> */}
 
 
               <SectionList
@@ -118,7 +132,7 @@ const CountrySelection = () => {
   )
 }
 
-export default CountrySelection;
+export default CountrySelectionList;
 
 const styles = StyleSheet.create({
     sView:{
@@ -143,10 +157,20 @@ const styles = StyleSheet.create({
     nationName:{
         width:"65%",
     },
-    searchBar:{
-        margin:10,
+    searchBarContainer:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        // backgroundColor: '#fff',
+        marginLeft:30,
+        width:"80%",
         borderBottomColor:"#c8c8c8",
         borderBottomWidth:2
+    },
+    searchBar:{
+        marginLeft:10,
+        // borderBottomColor:"#c8c8c8",
+        // borderBottomWidth:2
     },
     header: {
         fontSize: 18,

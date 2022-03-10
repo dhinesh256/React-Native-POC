@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput ,Modal} from 'react-native'
+import { View, Text, StyleSheet, FlatList, TouchableWithoutFeedback,TouchableOpacity, TextInput ,Modal, KeyboardAvoidingView , Keyboard,Dimensions} from 'react-native'
 import React , {useState} from 'react'
 import CountryFlag from "react-native-country-flag";
 import  Icon  from 'react-native-vector-icons/FontAwesome';
 
 import CountryData from '../data/countryDetails'
 import ButtonComp from './ButtonComp';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import CountrySelectionList from './CountrySectionList';
 
 type countryProps = {
         name: string;
@@ -21,10 +21,10 @@ type Props = {
 
 const CountrySelection = ({navigation}:Props) => {
 
-
+    
     const [searchInput, setSearchInput] = useState("")
 
-    const [isEmpty, setisEmpty] = useState(true)
+    const [textisEmpty, setTextisEmpty] = useState(true)
 
     const [FilteredData, setFilteredData] = useState(CountryData)
 
@@ -37,12 +37,12 @@ const CountrySelection = ({navigation}:Props) => {
         navigation.navigate(name)
     }
 
-    const displayView = () => {
-        if(searchInput===""){
-            setisEmpty(true)
+    const displayView = (text:String) => {
+        if(text==""){
+            setTextisEmpty(true)
         }
         else{
-            setisEmpty(false)
+            setTextisEmpty(false)
         }
     }
     
@@ -76,7 +76,7 @@ const CountrySelection = ({navigation}:Props) => {
         })
         // console.log(selectedData)
         setFilteredData(selectedData)
-        console.log(selectedData===FilteredData)
+        // console.log(selectedData===FilteredData)
 
         // console.log(selected)
 
@@ -91,6 +91,7 @@ const CountrySelection = ({navigation}:Props) => {
                 changeSelected(item)
                 setExtraData(!extraData)
                 setDisplayButton(true)
+                // Keyboard.dismiss()
                 
                 // console.log(newD)
                 // setFilteredData(newD)
@@ -121,49 +122,55 @@ const CountrySelection = ({navigation}:Props) => {
     }
 
   return (
-      <View style={styles.sView}>
+      <View style={{...styles.sView }}>
           <View >
-                    <View style={styles.searchBarContainer}>
-                            <TextInput
-                            style={styles.searchBar}
-                            value= {searchInput}
-                            placeholder='search here'
-                            onChangeText={(text) => searchFilter(text)}
-                            />
-                            <Icon name="search" size={25} color="blue" />
+          
+            <View style={styles.searchBarContainer}>
+                    <TextInput
+                    style={styles.searchBar}
+                    value= {searchInput}
+                    placeholder='search here'
+                    onChangeText={(text) => {
+                        searchFilter(text)
+                        displayView(text)
+                    }}
+                    onFocus={()=>{
+                        setDisplayButton(false)
+                    }}
+                    />
+                    <Icon name="search" size={25} color="blue" />
+            </View>
 
-                    </View>
+            
+            {/* <Text>{textisEmpty?"hello":"bye"}     {searchInput}</Text> */}
+            
+            
+            { textisEmpty ? 
 
-              <Modal
-                animationType="fade"
-                transparent={true}
-                visible={displayButton}
-                onRequestClose={() => {
-                    setDisplayButton(!displayButton)
-                }}>
-                    
-                            <View style={styles.bottomView}>
-                            <ButtonComp name={"EnterAmountScreen"} text={"continue"} navigation={navigation} 
-                            onPress={()=>buttonPress(navigation,"EnterAmountScreen")}/>
-                            </View>
-              </Modal>
-              <Text>{displayButton?"hello":"bye"}</Text>
-              <FlatList
-              data={FilteredData}
-              keyExtractor={(item,index) => index.toString()}
-              ItemSeparatorComponent = {ItemSeperatorView}
-              renderItem={({item}) => renderItemView(item)}
-              style={{margin:10,marginBottom:10}}
-              extraData={extraData}
-              
-              />
+            <CountrySelectionList navigation={navigation}/>
 
-              {/* {displayButton ? 
-                 <View style={styles.bottomView}>
-                 <ButtonComp name={"EnterAmountScreen"} text={"continue"} navigation={navigation} onPress={()=>buttonPress(navigation,"EnterAmountScreen")}/>               
-                 </View>
-                : <></>
-                } */}
+            :    
+                
+            <FlatList
+            data={FilteredData}
+            keyExtractor={(item,index) => index.toString()}
+            ItemSeparatorComponent = {ItemSeperatorView}
+            renderItem={({item}) => renderItemView(item)}
+            style={{margin:10,marginBottom:60}}
+            extraData={extraData}
+            
+            />
+
+            }
+            
+
+            {displayButton ? 
+                <View style={styles.bottomView}>
+                <ButtonComp name={"EnterAmountScreen"} text={"continue"} navigation={navigation} onPress={()=>buttonPress(navigation,"EnterAmountScreen")}/>               
+                </View>
+                
+            : <></>
+            }
               
           </View>
       </View>
@@ -174,8 +181,8 @@ export default CountrySelection;
 
 const styles = StyleSheet.create({
     sView:{
-        // flex:1,
-        paddingBottom:10
+        flex:1,
+        paddingBottom:10,
     
     },
     container:{
@@ -201,26 +208,42 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#fff',
         marginLeft:30,
-        width:"70%",
+        marginBottom:20,
+        width:"80%",
         borderBottomColor:"#c8c8c8",
-        borderBottomWidth:1
+        borderBottomWidth:2
     },
     searchBar:{
-        width:"100%",
-        color:'black',
-        fontSize:15,
-        fontWeight:'600',
+        marginLeft:10
+        // width:"100%",
+        // color:'black',
+        // fontSize:15,
+        // fontWeight:'600',
     },
     bottomView: {
         width: '100%',
         height: 80,
         backgroundColor: '#fff',
         justifyContent: 'center',
-        
         position: 'absolute', 
-        bottom: 0, 
+        bottom: 60, 
+        zIndex:1
       }
     
 })
+
+
+{/* <Modal
+    animationType="fade"
+    transparent={true}
+    visible={displayButton}
+    onRequestClose={() => {
+        setDisplayButton(!displayButton)
+    }}>
+        
+                <View style={styles.bottomView}>
+                <ButtonComp name={"EnterAmountScreen"} text={"continue"} navigation={navigation} 
+                onPress={()=>buttonPress(navigation,"EnterAmountScreen")}/>
+                </View>
+</Modal> */}

@@ -3,6 +3,7 @@ import React from 'react'
 import TextBoxAmt from '../components/TextBoxAmt'
 import ButtonComp from '../components/ButtonComp'
 import CountryFlag from 'react-native-country-flag'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 const EstimateDetails = () => {
   return (
@@ -11,8 +12,11 @@ const EstimateDetails = () => {
             <CountryFlag isoCode='IN' size={10} style={{borderRadius:75}}/>
             {`  NationName`}
         </Text>
-      <TextBoxAmt/>
-      <TextBoxAmt/>
+      <TouchableWithoutFeedback>
+          <TextBoxAmt/>
+          <TextBoxAmt/>
+      </TouchableWithoutFeedback>
+      
       <ButtonComp text={"continue to receiver"}/>
     </View>
   )

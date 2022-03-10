@@ -63,12 +63,12 @@ const MenuModal = () => {
                         renderItem={({item}) => renderItemView(item)}
                         style={{margin:10,marginBottom:10}}
                     />
-                    <View style={{flexDirection:"row", justifyContent:"space-between",marginLeft:40,marginTop:0}}>
+                    {/* <View style={{flexDirection:"row", justifyContent:"space-between",marginLeft:40,marginTop:0}}>
                       <Text style={{color:"white"}}>
                           EN
                       </Text>
                       <Icon name={"chevron-right"} color={"white"} size={24}/>
-                    </View>
+                    </View> */}
               </View>
             </View>
 
@@ -76,8 +76,8 @@ const MenuModal = () => {
        
       </Modal>
 
-      {modalVisible ? <Icon name='close' color={'#ffdd00'}  style={styles.barIcon} onPress={()=>setModalVisible(false)}/> : <></> }
-      {!modalVisible ? <Icon name='bars' style={styles.barIcon} onPress={()=>setModalVisible(true)}/>  : <></>} 
+      {modalVisible ? <Icon name='close' color={'#ffdd00'}  style={styles.barIcon} onPress={()=>setModalVisible(false)}/> 
+      : <Icon name='bars' style={styles.barIcon} onPress={()=>setModalVisible(true)}/> }
     </View>
   )
 }

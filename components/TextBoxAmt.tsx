@@ -1,5 +1,6 @@
 import React , {useState} from 'react'
 import { StyleSheet, Text, TextInput, View ,SafeAreaView} from 'react-native'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 function TextBoxAmt() {
 
@@ -39,6 +40,7 @@ function TextBoxAmt() {
   return (
     
     <SafeAreaView>
+      <TouchableWithoutFeedback>
       <View style={styles.container}>
         <View style={[styles.AmountSection,isValid? styles.ValidAmountSelction : styles.inValidAmountSelction]}>
             <TextInput
@@ -56,6 +58,9 @@ function TextBoxAmt() {
         </Text>
         
     </View>
+
+      </TouchableWithoutFeedback>
+      
     </SafeAreaView>
     
   )
