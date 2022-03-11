@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet} from 'react-native'
+import { View, Text, Pressable, StyleSheet , TouchableOpacity} from 'react-native'
 import React  from 'react'
 
 type buttonProps = {
@@ -13,7 +13,7 @@ const ButtonComp = (props:buttonProps) => {
     const {name , navigation , text , onPress} = props;
     return(
     <View style={styles.container}>
-      <Pressable
+      <TouchableOpacity
           style={styles.pressable}
           onPress={onPress? onPress : () => navigation.navigate(name)}
         >
@@ -21,7 +21,7 @@ const ButtonComp = (props:buttonProps) => {
             {`${text}`}
           </Text>
 
-        </Pressable>
+        </TouchableOpacity>
     </View>
 )}
 

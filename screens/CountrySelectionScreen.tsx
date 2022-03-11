@@ -15,7 +15,7 @@ const CountrySelectionScreen = () => {
   
 
   return (
-    <View style={{width:windowWidth , height:windowHeight}}>
+    <View >
 
       <CountrySelection navigation={navigation}/>
       

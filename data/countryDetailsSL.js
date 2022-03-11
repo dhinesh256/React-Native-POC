@@ -83,34 +83,34 @@ const CountryData = [
         "iso3": "ALB",
         "selected":false
     },
-    // {
-    //     "name": "Algeria",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Algeria.svg",
-    //     "iso2": "DZ",
-    //     "iso3": "DZA",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Andorra",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Andorra.svg",
-    //     "iso2": "AD",
-    //     "iso3": "AND",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Angola",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Angola.svg",
-    //     "iso2": "AO",
-    //     "iso3": "AGO",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Anguilla",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Anguilla.svg",
-    //     "iso2": "AI",
-    //     "iso3": "AIA",
-    //     "selected":false
-    // },
+    {
+        "name": "Algeria",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Algeria.svg",
+        "iso2": "DZ",
+        "iso3": "DZA",
+        "selected":false
+    },
+    {
+        "name": "Andorra",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Andorra.svg",
+        "iso2": "AD",
+        "iso3": "AND",
+        "selected":false
+    },
+    {
+        "name": "Angola",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Angola.svg",
+        "iso2": "AO",
+        "iso3": "AGO",
+        "selected":false
+    },
+    {
+        "name": "Anguilla",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Anguilla.svg",
+        "iso2": "AI",
+        "iso3": "AIA",
+        "selected":false
+    },
     // {
     //     "name": "Antigua and Barbuda",
     //     "flag": "https://upload.wikimedia.org/wikipedia/commons/8/89/Flag_of_Antigua_and_Barbuda.svg",

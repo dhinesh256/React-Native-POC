@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View ,KeyboardAvoidingView} from 'react-native'
+import React , { useState } from "react";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View ,KeyboardAvoidingView ,TouchableWithoutFeedback} from 'react-native'
 import {useNavigation} from '@react-navigation/core'
 import { RootStackParams } from "../App";
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -9,6 +9,8 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 
 const HomeScreen = ()=>{
+
+    const [Amount, setAmount] = useState(10.00)
 
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>()
     return(
@@ -26,6 +28,24 @@ const HomeScreen = ()=>{
                 <TextInput style={styles.input2}>
                     <Text>Send amount</Text>
                 </TextInput> */}
+
+                <TouchableWithoutFeedback>
+                <View style={styles.txtInputcontainer}>
+                    <View style={styles.AmountSection}>
+                        <TextInput
+                            placeholder='0.00'
+                            style={styles.input}
+                            onChangeText={(item) => {setAmount(parseInt(item))}}
+                            keyboardType="numeric"
+                            >
+                        </TextInput>
+                        <Text style={styles.text}>CAD</Text>
+                    </View>
+                </View>
+                </TouchableWithoutFeedback>
+
+
+
                 <TouchableOpacity style={styles.sendBtn} onPress={()=>{navigation.navigate("CountrySelectionScreen")}}>
                     <Text style={styles.btnText}>Send Money Now</Text>
                 </TouchableOpacity>
@@ -78,8 +98,8 @@ const styles = StyleSheet.create({
     sendBtn:{
         backgroundColor:"black",
         borderRadius:25,
-        width:"40%",
-        height:"7%",
+        // width:"40%",
+        // height:"7%",
         margin:30,
         alignSelf:"flex-start"
     },
@@ -110,7 +130,41 @@ const styles = StyleSheet.create({
         fontWeight:"normal",
         textDecorationLine:"underline",
         color:"black",
-    }
+    },
+
+    txtInputcontainer: {
+        marginTop:30,
+        marginBottom:10,
+        width:"83%"
+        
+      },
+      AmountSection: {
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          backgroundColor: '#fff',
+          width:"100%",
+          borderRadius:15,
+          padding:5
+      },
+      input: {
+        color:'black',
+        fontSize:25,
+        marginLeft:10,
+        fontWeight:'600',
+        width:"65%"
+      },
+      text:{
+        backgroundColor:'#fff',
+        padding:5,
+        borderRadius:5,
+        paddingLeft:20,
+        paddingRight:20,
+        marginRight:5,
+        marginBottom:3,
+        fontSize:20,
+        color:"#000"
+      },
 })
 
 export default HomeScreen

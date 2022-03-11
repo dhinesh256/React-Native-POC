@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList, TouchableWithoutFeedback,TouchableOpacity, TextInput ,Modal, KeyboardAvoidingView , Keyboard,Dimensions} from 'react-native'
+import { View, Text, StyleSheet, FlatList, TouchableWithoutFeedback,TouchableOpacity,ScrollView, TextInput ,Modal, KeyboardAvoidingView , Keyboard,Dimensions} from 'react-native'
 import React , {useState} from 'react'
 import CountryFlag from "react-native-country-flag";
 import  Icon  from 'react-native-vector-icons/FontAwesome';
@@ -100,10 +100,10 @@ const CountrySelection = ({navigation}:Props) => {
             }
             
             }
-            style={[item.selected ? styles.container : {}]} 
+            style={[item.selected ? styles.container : {backgroundColor:"#fff"}]} 
         >
         <View style={styles.nationsContainer}>
-            <CountryFlag isoCode={item.iso2} size={25} style={styles.flag} />
+            <CountryFlag isoCode={item.iso2} size={15} style={styles.flag} />
             
             <Text style={styles.nationName}> {`${item.name}`} </Text>
 
@@ -122,8 +122,7 @@ const CountrySelection = ({navigation}:Props) => {
     }
 
   return (
-      <View style={{...styles.sView }}>
-          <View >
+      <View style={styles.sView}>
           
             <View style={styles.searchBarContainer}>
                     <TextInput
@@ -141,7 +140,7 @@ const CountrySelection = ({navigation}:Props) => {
                     <Icon name="search" size={25} color="blue" />
             </View>
 
-            
+           
             {/* <Text>{textisEmpty?"hello":"bye"}     {searchInput}</Text> */}
             
             
@@ -156,14 +155,15 @@ const CountrySelection = ({navigation}:Props) => {
             keyExtractor={(item,index) => index.toString()}
             ItemSeparatorComponent = {ItemSeperatorView}
             renderItem={({item}) => renderItemView(item)}
-            style={{margin:10,marginBottom:60}}
+            style={displayButton ? {margin:10,marginBottom:70} : {margin:10,marginBottom:0}}
             extraData={extraData}
             
             />
 
             }
             
-
+            
+            
             {displayButton ? 
                 <View style={styles.bottomView}>
                 <ButtonComp name={"EnterAmountScreen"} text={"continue"} navigation={navigation} onPress={()=>buttonPress(navigation,"EnterAmountScreen")}/>               
@@ -172,7 +172,6 @@ const CountrySelection = ({navigation}:Props) => {
             : <></>
             }
               
-          </View>
       </View>
   )
 }
@@ -183,6 +182,8 @@ const styles = StyleSheet.create({
     sView:{
         flex:1,
         paddingBottom:10,
+        height:"100%",
+        backgroundColor:"#fff"
     
     },
     container:{
@@ -192,10 +193,10 @@ const styles = StyleSheet.create({
     flag:{
         borderRadius:90,
         marginLeft:10,
-        marginRight:40,
+        marginRight:30,
     },
     nationsContainer:{
-        flex:1,
+        // flex:1,
         flexDirection:'row',
         justifyContent:'flex-start',
         alignItems:'center',
@@ -203,6 +204,8 @@ const styles = StyleSheet.create({
     },
     nationName:{
         width:"65%",
+        color:"#035973",
+        fontWeight:'bold'
     },
     searchBarContainer:{
         flexDirection: 'row',
@@ -210,6 +213,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginLeft:30,
         marginBottom:20,
+        marginTop:20,
         width:"80%",
         borderBottomColor:"#c8c8c8",
         borderBottomWidth:2
@@ -227,7 +231,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         justifyContent: 'center',
         position: 'absolute', 
-        bottom: 60, 
+        bottom: 0, 
         zIndex:1
       }
     

@@ -49,32 +49,29 @@ const CountrySelectionList = ({navigation}:Props) => {
 
     const changeSelected = (selected:countryProps) => {
 
-        const selectedData = FilteredData
+        const selectedData = CountryData
         selectedData.map(({data},index) => {
+            
             data[index].iso2 === selected.iso2 ? 
             data[index].selected==true : 
             data[index].selected==false
+
+            return {...data}
         })
-        // console.log(selectedData)
+        console.log(selectedData[0])
         setFilteredData(selectedData)
 
-        // console.log(selected)
+        console.log(selectedData ==  FilteredData)
 
     }
 
     const renderItemView = (item:countryProps) => (
         <TouchableOpacity
             onPress={()=>{
-                // setFilteredData(FilteredData)
-                // item.selected = true
+               
                 changeSelected(item)
                 setDisplayButton(true)
                 
-                // const newD = changeSelected(item)
-                // console.log(newD)
-                // setFilteredData(newD)
-                // console.log(selected===item.iso2)
-                // setFilteredData(FilteredData)
             }
             }
             style={[item.selected ? styles.container : {}]}
@@ -110,20 +107,17 @@ const CountrySelectionList = ({navigation}:Props) => {
              <Icon name="search" size={25} color="blue" />
             </View> */}
 
-
-              <SectionList
-              sections={FilteredData}
-              keyExtractor={(item,index) => index.toString()}
-              ItemSeparatorComponent = {ItemSeperatorView}
-              renderItem={({item}) => renderItemView(item)}
-              renderSectionHeader={({ section: { title } }) => (
-                <Text style={styles.header}>{title}</Text>
-              )}
-            //   renderSectionFooter={()=>{
-            //     return (<ButtonComp name={"continue"}/>)
-            //   }}
-              style={{margin:10}}
-              />
+            <SectionList
+            sections={FilteredData}
+            keyExtractor={(item,index) => index.toString()}
+            ItemSeparatorComponent = {ItemSeperatorView}
+            renderItem={({item}) => renderItemView(item)}
+            renderSectionHeader={({ section: { title } }) => (
+            <Text style={styles.header}>{title}</Text>
+            )}
+        
+            style={{margin:10}}
+            />
 
               
           </View>
@@ -136,7 +130,6 @@ export default CountrySelectionList;
 
 const styles = StyleSheet.create({
     sView:{
-        // flex:1,
     },
     container:{
         backgroundColor:'#8bd683',

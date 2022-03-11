@@ -1,6 +1,5 @@
 import React , {useState} from 'react'
-import { StyleSheet, Text, TextInput, View ,SafeAreaView} from 'react-native'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
+import { StyleSheet, Text, TextInput, View ,SafeAreaView ,TouchableWithoutFeedback} from 'react-native'
 
 function TextBoxAmt() {
 
@@ -39,9 +38,9 @@ function TextBoxAmt() {
 
   return (
     
-    <SafeAreaView>
-      <TouchableWithoutFeedback>
+     
       <View style={styles.container}>
+        <TouchableWithoutFeedback>
         <View style={[styles.AmountSection,isValid? styles.ValidAmountSelction : styles.inValidAmountSelction]}>
             <TextInput
                 placeholder='0.00'
@@ -50,18 +49,17 @@ function TextBoxAmt() {
                 keyboardType="numeric"
                 >
             </TextInput>
+       
             <Text style={styles.text}>CAD</Text>
         </View>
+        </TouchableWithoutFeedback>
 
         <Text style={styles.errorText}>
           {errorMsg}
         </Text>
-        
-    </View>
-
-      </TouchableWithoutFeedback>
+      </View>
       
-    </SafeAreaView>
+      
     
   )
 }
@@ -69,8 +67,8 @@ function TextBoxAmt() {
 
 const styles = StyleSheet.create({
     container: {
-      marginTop:40,
-      marginBottom:10,
+      marginTop:0,
+      marginBottom:0,
       
     },
     AmountSection: {
@@ -78,9 +76,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: '#fff',
-        marginLeft:40,
-        width:"80%",
-        borderRadius:15
+        marginLeft:20,
+        width:"90%",
     },
     ValidAmountSelction:{
         borderBottomColor:"#ccc6c6",
@@ -93,7 +90,7 @@ const styles = StyleSheet.create({
     input: {
       color:'black',
       fontSize:25,
-      fontWeight:'600',
+      fontWeight:'bold',
       width:"50%"
     },
     text:{

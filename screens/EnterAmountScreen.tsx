@@ -14,8 +14,7 @@ type Props = {
 const EnterAmountScreen = ({navigation}:Props) => {
 
   return (
-    <SafeAreaView>
-    <View style={{justifyContent:"center",alignItems:"center"}}>        
+    // <View style={{justifyContent:"center",backgroundColor:"white",height:"100%"}}>        
        
         <View style={styles.main}>
             <Text style={styles.text}>{` Send money to  `}
@@ -36,8 +35,7 @@ const EnterAmountScreen = ({navigation}:Props) => {
             <ButtonComp text={"Check fees"} name={"EstimateDetailsScreen"} navigation={navigation}/>
         </View>
         
-    </View>
-    </SafeAreaView>
+    // </View>
   )
 }
 
@@ -45,8 +43,9 @@ export default EnterAmountScreen
 
 const styles = StyleSheet.create({
   main:{
+    flex:1,
     justifyContent:'center',
-    marginVertical:70
+    backgroundColor:"white",
   },
   blueText:{
     color:'blue',

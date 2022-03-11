@@ -112,7 +112,7 @@ const ItemSeperatorView = () => {
                     keyExtractor={(item,index) => index.toString()}
                     ItemSeparatorComponent = {ItemSeperatorView}
                     renderItem={({item}) => renderItemView(item)}
-                    style={{marginTop:340,elevation:3,margin:10,backgroundColor:'#fff',height:"40%"}}
+                    style={styles.flatlistStyle}
                     extraData={extraData}
               />
               </View>
@@ -143,7 +143,6 @@ const ItemSeperatorView = () => {
               </View>
           </View>
 
-              <TextBoxAmt/>
     </View>
     </KeyboardAvoidingView>
   );
@@ -171,6 +170,15 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
+  flatlistStyle:{
+    marginTop:353,
+    elevation:3,
+    margin:10,
+    backgroundColor:'#fff',
+    height:"40%",
+    width:"82%",
+    borderRadius:10
+  },
   button: {
     borderRadius: 20,
     padding: 10,
@@ -196,7 +204,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'white',
-    borderRadius:50,
+    borderRadius:15,
+    padding:8,
     // marginLeft:0,
     width:"70%",
     
