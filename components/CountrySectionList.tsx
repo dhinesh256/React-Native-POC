@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, FlatList,SectionList , TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, FlatList,SectionList , TouchableOpacity, TextInput , ScrollView } from 'react-native'
 import React , {useState} from 'react'
 import CountryFlag from "react-native-country-flag";
 import  Icon  from 'react-native-vector-icons/FontAwesome';
@@ -20,58 +20,51 @@ type Props = {
 
 const CountrySelectionList = ({navigation}:Props) => {
 
-
     const [FilteredData, setFilteredData] = useState(CountryData)
 
     const [displayButton, setDisplayButton] = useState(false)
+
+    const [extraData, setExtraData] = useState(false)
 
     const buttonPress = (navigation:any,name:String) => {
         setDisplayButton(false)
         navigation.navigate(name)
     }
-    // const [selected, setSelected] = useState("IN")
 
-    // const searchFilter = (text:string) => {
-    //     if(text){
-    //         const newData = CountryData.filter(({data},index) => {
-    //             const itemValue = data[index].name.toUpperCase() 
-    //             const textValue = text.toUpperCase()
-    //             return itemValue.indexOf(textValue) > -1 
-    //         })
-    //         setFilteredData(newData)
-    //         setSearchInput(text)
-    //     }
-    //     else{
-    //         setFilteredData(CountryData)
-    //         setSearchInput(text)
-    //     }
-    // }
-
-    const changeSelected = (selected:countryProps) => {
+    const changeSelected = (Selected:countryProps) => {
 
         const selectedData = CountryData
         selectedData.map(({data},index) => {
+
+
+            data.map((item) => 
+            {
+                // console.log(index)
+                // console.log(item)
+                // console.log(Selected)
+
+                if( item.iso2 === Selected.iso2 ){
+                item.selected = true 
+                }else{
+                    item.selected = false
+                }
+                console.log(item)
+                return {...item}
+            })
+
+            return {...data}          
             
-            data[index].iso2 === selected.iso2 ? 
-            data[index].selected==true : 
-            data[index].selected==false
-
-            return {...data}
         })
-        console.log(selectedData[0])
+        // console.log(selectedData[0])
         setFilteredData(selectedData)
-
-        console.log(selectedData ==  FilteredData)
-
     }
 
     const renderItemView = (item:countryProps) => (
         <TouchableOpacity
             onPress={()=>{
-               
                 changeSelected(item)
                 setDisplayButton(true)
-                
+                setExtraData(!extraData)
             }
             }
             style={[item.selected ? styles.container : {}]}
@@ -96,33 +89,30 @@ const CountrySelectionList = ({navigation}:Props) => {
     }
 
   return (
-      <SafeAreaView style={styles.sView}>
-          <View>
-            {/* <View style={styles.searchBarContainer}>
-              <TextInput
-              style={styles.searchBar}
-              value= {searchInput}
-              placeholder='search here'
-              onChangeText={(text) => searchFilter(text)}/>
-             <Icon name="search" size={25} color="blue" />
-            </View> */}
-
+      <View style={styles.sView}>
+            
             <SectionList
             sections={FilteredData}
             keyExtractor={(item,index) => index.toString()}
             ItemSeparatorComponent = {ItemSeperatorView}
             renderItem={({item}) => renderItemView(item)}
+            extraData={extraData}
             renderSectionHeader={({ section: { title } }) => (
             <Text style={styles.header}>{title}</Text>
             )}
         
-            style={{margin:10}}
-            />
+            style={displayButton ? {margin:10,marginBottom:70} : {margin:10,marginBottom:0}}
+            />   
 
-              
+            {displayButton ? 
+                <View style={styles.bottomView}>
+                <ButtonComp name={"EnterAmountScreen"} text={"continue"} navigation={navigation} onPress={()=>buttonPress(navigation,"EnterAmountScreen")}/>               
+                </View>
+                
+            : <></>
+        }           
           </View>
-      </SafeAreaView>
-    
+          
   )
 }
 
@@ -130,6 +120,10 @@ export default CountrySelectionList;
 
 const styles = StyleSheet.create({
     sView:{
+        flex:1,
+        paddingBottom:10,
+        height:"100%",
+        backgroundColor:"#fff"
     },
     container:{
         backgroundColor:'#8bd683',
@@ -162,13 +156,23 @@ const styles = StyleSheet.create({
     },
     searchBar:{
         marginLeft:10,
-        // borderBottomColor:"#c8c8c8",
-        // borderBottomWidth:2
+    
     },
     header: {
         fontSize: 18,
         color: "#000",
         padding:3,
-        marginTop:7
+        fontWeight:"bold",
+        marginTop:10,
+        marginBottom:15,
     },
+    bottomView: {
+        width: '100%',
+        height: 70,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        position: 'absolute', 
+        bottom: 0, 
+        zIndex:1
+    }
 })

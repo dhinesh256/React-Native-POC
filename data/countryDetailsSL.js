@@ -111,76 +111,76 @@ const CountryData = [
         "iso3": "AIA",
         "selected":false
     },
-    // {
-    //     "name": "Antigua and Barbuda",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/8/89/Flag_of_Antigua_and_Barbuda.svg",
-    //     "iso2": "AG",
-    //     "iso3": "ATG",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Argentina",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg",
-    //     "iso2": "AR",
-    //     "iso3": "ARG",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Armenia",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_Armenia.svg",
-    //     "iso2": "AM",
-    //     "iso3": "ARM",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Aruba",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Flag_of_Aruba.svg",
-    //     "iso2": "AW",
-    //     "iso3": "ABW",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Australia",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg",
-    //     "iso2": "AU",
-    //     "iso3": "AUS",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Austria",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg",
-    //     "iso2": "AT",
-    //     "iso3": "AUT",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Azerbaijan",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Azerbaijan.svg",
-    //     "iso2": "AZ",
-    //     "iso3": "AZE",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Bahamas",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/9/93/Flag_of_the_Bahamas.svg",
-    //     "iso2": "BS",
-    //     "iso3": "BHS",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Bahrain",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Bahrain.svg",
-    //     "iso2": "BH",
-    //     "iso3": "BHR",
-    //     "selected":false
-    // },
-    // {
-    //     "name": "Bangladesh",
-    //     "flag": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_Bangladesh.svg",
-    //     "iso2": "BD",
-    //     "iso3": "BGD",
-    //     "selected":false
-    // },
+    {
+        "name": "Antigua and Barbuda",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/8/89/Flag_of_Antigua_and_Barbuda.svg",
+        "iso2": "AG",
+        "iso3": "ATG",
+        "selected":false
+    },
+    {
+        "name": "Argentina",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg",
+        "iso2": "AR",
+        "iso3": "ARG",
+        "selected":false
+    },
+    {
+        "name": "Armenia",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_Armenia.svg",
+        "iso2": "AM",
+        "iso3": "ARM",
+        "selected":false
+    },
+    {
+        "name": "Aruba",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Flag_of_Aruba.svg",
+        "iso2": "AW",
+        "iso3": "ABW",
+        "selected":false
+    },
+    {
+        "name": "Australia",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg",
+        "iso2": "AU",
+        "iso3": "AUS",
+        "selected":false
+    },
+    {
+        "name": "Austria",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg",
+        "iso2": "AT",
+        "iso3": "AUT",
+        "selected":false
+    },
+    {
+        "name": "Azerbaijan",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Azerbaijan.svg",
+        "iso2": "AZ",
+        "iso3": "AZE",
+        "selected":false
+    },
+    {
+        "name": "Bahamas",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/9/93/Flag_of_the_Bahamas.svg",
+        "iso2": "BS",
+        "iso3": "BHS",
+        "selected":false
+    },
+    {
+        "name": "Bahrain",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Bahrain.svg",
+        "iso2": "BH",
+        "iso3": "BHR",
+        "selected":false
+    },
+    {
+        "name": "Bangladesh",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_Bangladesh.svg",
+        "iso2": "BD",
+        "iso3": "BGD",
+        "selected":false
+    },
     // {
     //     "name": "Barbados",
     //     "flag": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Flag_of_Barbados.svg",

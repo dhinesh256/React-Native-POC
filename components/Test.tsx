@@ -1,7 +1,7 @@
 
 import React , {useState} from 'react'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
-import {styles} from '../styles/test.module.scss'
+// import {styles} from '../styles/test.module.scss'
  
 
 function Test() {

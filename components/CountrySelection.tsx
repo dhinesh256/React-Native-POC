@@ -227,13 +227,13 @@ const styles = StyleSheet.create({
     },
     bottomView: {
         width: '100%',
-        height: 80,
+        height: 70,
         backgroundColor: '#fff',
         justifyContent: 'center',
         position: 'absolute', 
         bottom: 0, 
         zIndex:1
-      }
+    }
     
 })
 

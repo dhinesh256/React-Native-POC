@@ -100,7 +100,8 @@ const styles = StyleSheet.create({
         borderRadius:25,
         // width:"40%",
         // height:"7%",
-        margin:30,
+        margin:20,
+        marginLeft:30,
         alignSelf:"flex-start"
     },
     btnText:{
@@ -116,6 +117,8 @@ const styles = StyleSheet.create({
         justifyContent:"space-evenly",
         alignSelf:"flex-start",
         left:"3%",
+        marginTop:10,
+        marginLeft:18,
     },
     shieldIcon:{
         color:"black",

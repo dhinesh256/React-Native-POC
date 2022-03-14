@@ -1,14 +1,29 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, View,Image,TouchableOpacity ,Text,Pressable} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import MenuModal from './MenuModal';
 
+type Props = {
+    nav:any
+}
 
+const Header: React.FC<Props> = ({nav}) => {
 
-const Header: React.FC = () => {
+    
     return (
             <View style={styles.headerBar}>
+
+                {/* <TouchableOpacity onPress={()=>{nav.navigate("Home")}}>
+                <Image style={styles.imageContainer} source={require('../assets/WU.png')}/>
+                </TouchableOpacity> */}
+
+                {/* <Image style={styles.imageContainer} source={require('../assets/WU.png')}/> */}
+
+
+                <TouchableOpacity onPress={()=>{nav.navigate("Home")}}>
                 <Text style={styles.logo}>\\WU</Text>
+                </TouchableOpacity>
+                
                 {/* <Icon name='bars' style={styles.barIcon} /> */}
                 <MenuModal/>
             </View>
@@ -34,6 +49,12 @@ const styles = StyleSheet.create({
         color: "#ffdd00",
         fontSize:35,
         padding:15,
+    },
+    imageContainer:{
+        top:"4%",
+        left:"4%",
+        width:"5%",
+        height:"20%"
     },
     
 })

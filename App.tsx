@@ -22,6 +22,8 @@ import EnterAmountScreen from './screens/EnterAmountScreen';
 import EstimateDetails from './screens/EstimateDetails';
 import HomeScreen from './screens/HomeScreen';
 import Header from './components/Header';
+import DropdownComp from './DropdownComp';
+import StepperComp from './stepper';
 
 export type RootStackParams = {
   Home:undefined;
@@ -34,11 +36,13 @@ const RootStack = createNativeStackNavigator<RootStackParams>();
 
 const App = () => {
 
+  return (<StepperComp/>)
+
   // return(<EstimateDetails/>)
 
   return (
     <NavigationContainer>
-         <RootStack.Navigator screenOptions={{ header: () => {return (<Header/>);}}} >
+         <RootStack.Navigator screenOptions={{ header: ({navigation}) => {return (<Header nav={navigation}/>);}}} >
       
           <RootStack.Screen name="Home" component={HomeScreen}   />
           <RootStack.Screen name="CountrySelectionScreen" component={CountrySelection} />

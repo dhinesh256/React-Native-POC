@@ -3,7 +3,7 @@ import React ,{useState} from 'react'
 import TextBoxAmt from '../components/TextBoxAmt'
 import CountryFlag from 'react-native-country-flag'
 import  Icon  from 'react-native-vector-icons/FontAwesome5'
-import Header from '../components/Header'
+
 
 const EstimateDetails = () => {
 
@@ -15,9 +15,9 @@ const EstimateDetails = () => {
 
       <View style={styles.offer}>
                 <Text style={styles.offerTitle}>New customers limited time offer!</Text>
-                <Text style={styles.offerText}>{ `Send cash using credit/debit  
-cards with reduced transfer fees2
-starting from $2.99`}
+                <Text style={styles.offerText}>Send cash using credit/debit {'\n'} 
+                  cards with reduced transfer fees2{'\n'} 
+                  starting from $2.99{'\n'} 
                 </Text>
       </View>
 
@@ -28,7 +28,6 @@ starting from $2.99`}
 
         <Text style={styles.text}>You're sending</Text>
           <TextBoxAmt/>
-
 
         <View style={styles.sendingDetails}>
           <View style={styles.payBy}>
@@ -84,7 +83,7 @@ const styles = StyleSheet.create({
    offer:{
     backgroundColor: "#ffdd00",
     alignItems:"center",
-    height:"21%",
+    height:"16%",
     margin:"4%",
     borderRadius:5
     },
@@ -101,7 +100,6 @@ const styles = StyleSheet.create({
         color:"black",
     },
 
-
     text:{
         // marginLeft:25,
         // marginBottom:80,
@@ -114,6 +112,7 @@ const styles = StyleSheet.create({
       width:"112%",
       borderRadius:60,
       marginLeft:15,
+      marginBottom:100
     },
     pressable:{
       backgroundColor: "#FFDD00",
