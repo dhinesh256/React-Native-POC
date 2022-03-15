@@ -126,7 +126,7 @@ const ItemSeperatorView = () => {
 
                     <TextInput
                     style={styles.searchBar}
-                    // value= {selectedState}
+                    value= {selectedState.name}
                     placeholder='search here'
                     onChangeText={(text) => searchFilter(text)}
                     onFocus={()=>{

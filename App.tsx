@@ -10,7 +10,7 @@
 
 import React from 'react';
 import {
-  StyleSheet,
+  StyleSheet, SafeAreaView
 } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
@@ -23,7 +23,8 @@ import EstimateDetails from './screens/EstimateDetails';
 import HomeScreen from './screens/HomeScreen';
 import Header from './components/Header';
 import DropdownComp from './DropdownComp';
-import StepperComp from './stepper';
+import Stepper from './Stepper';
+import StepperReceive from './StepperReceive';
 
 export type RootStackParams = {
   Home:undefined;
@@ -36,12 +37,16 @@ const RootStack = createNativeStackNavigator<RootStackParams>();
 
 const App = () => {
 
-  return (<StepperComp/>)
+  // return (<StepperReceive/>)
+
+  // return (<DropdownComp/>)
 
   // return(<EstimateDetails/>)
 
   return (
+    
     <NavigationContainer>
+      
          <RootStack.Navigator screenOptions={{ header: ({navigation}) => {return (<Header nav={navigation}/>);}}} >
       
           <RootStack.Screen name="Home" component={HomeScreen}   />
@@ -50,7 +55,9 @@ const App = () => {
           <RootStack.Screen name='EstimateDetailsScreen' component={EstimateDetails} />
 
          </RootStack.Navigator>
+         
     </NavigationContainer> 
+
   );
 };
 

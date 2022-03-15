@@ -3,7 +3,8 @@ import React ,{useState} from 'react'
 import TextBoxAmt from '../components/TextBoxAmt'
 import CountryFlag from 'react-native-country-flag'
 import  Icon  from 'react-native-vector-icons/FontAwesome5'
-
+import Stepper from '../Stepper'
+import StepperReceive from '../StepperReceive'
 
 const EstimateDetails = () => {
 
@@ -27,35 +28,41 @@ const EstimateDetails = () => {
       </Text>
 
         <Text style={styles.text}>You're sending</Text>
-          <TextBoxAmt/>
-
-        <View style={styles.sendingDetails}>
-          <View style={styles.payBy}>
-            <Text style={styles.text2}>Pay by</Text>
-            <TouchableOpacity onPress={()=>{}}>
-              <Text style={styles.card}>Credit or debit card</Text>
-            </TouchableOpacity>
-            <Icon name='pen' color={"#054fc6"} size={17} onPress={()=>{}}/>
-          </View>
-          <Text style={styles.text2}>Guranteed rate = 0.7366 USD </Text>
-          <Text style={styles.text2}>Our transfer fees + {fees} </Text>
-          <TouchableOpacity onPress={()=>{}}><Text style={styles.text3}>Apply promo code </Text></TouchableOpacity>
+        
+        <TextBoxAmt/>
+        <View style={{width:"80%",flexDirection:"row",justifyContent:"space-between"}}>
+            <Stepper/>
+            <View style={styles.sendingDetails}>
+              <View style={styles.payBy}>
+                <Text style={styles.text2}>Pay by</Text>
+                <TouchableOpacity onPress={()=>{}}>
+                  <Text style={styles.card}>Credit or debit card</Text>
+                </TouchableOpacity>
+                <Icon name='pen' color={"#054fc6"} size={17} onPress={()=>{}}/>
+              </View>
+              <Text style={styles.text2}>Guranteed rate = 0.7366 USD </Text>
+              <Text style={styles.text2}>Our transfer fees + {fees} </Text>
+              <TouchableOpacity onPress={()=>{}}><Text style={styles.text3}>Apply promo code </Text></TouchableOpacity>
+            </View>
         </View>
+        
 
 
         <Text style={styles.text}>Your receiver gets</Text>
+        
         <TextBoxAmt />
 
-
+        <View style={{width:"80%",flexDirection:"row",justifyContent:"flex-start"}}>
+        <StepperReceive/>
         <View style={styles.receivingDetails}>
             <View style={styles.payBy}>
-              <Text style={styles.text2}>Received by</Text>
+              <Text style={styles.text4}>Received by</Text>
               <TouchableOpacity onPress={()=>{}}><Text style={styles.card}>Cash pickup</Text></TouchableOpacity>
               <Icon name='pen' color={"#054fc6"} size={17} onPress={()=>{}}/>
             </View>
-            <Text style={styles.text2}>Delivery in minutes</Text>
+            <Text style={styles.text4}>Delivery in minutes</Text>
         </View>
-
+        </View>
 
 
         <View style={styles.totalContainer}>
@@ -129,22 +136,24 @@ const styles = StyleSheet.create({
       color: "#000",
     },
     sendingDetails:{
-      width:"80%",
-      height:"14%",
-      margin:15,
-      marginLeft:"13%",
+      width:"100%",
+      height:"15%",
+      marginTop:16,
+      marginLeft:"1%",
       justifyContent:"space-between",
       alignItems:"flex-start"
     },
     receivingDetails:{
-      width:"80%",
-      height:"7%",
-      margin:15,
-      marginLeft:"13%",
-      justifyContent:"space-between"
+      width:"100%",
+      height:"5.5%",
+      marginTop:16,
+      // marginLeft:"10%",
+      justifyContent:"space-between",
+      alignItems:"flex-start"
     },
     payBy:{
       width:"60%",
+      height:30,
       flexDirection:"row",
       justifyContent:"space-around",
       alignItems:"center"
@@ -172,13 +181,24 @@ const styles = StyleSheet.create({
     text2:{
       color:"black",
       fontSize:14,
-      fontWeight:"400"
+      fontWeight:"400",
+      marginTop:5,
+      marginBottom:5
     },
     text3:{
       color:"#2884fe",
-      fontSize:14
-    }
-  
+      fontSize:14,
+      marginTop:3,
+      marginBottom:5
+    },
+    text4:{
+      height:20,
+      color:"black",
+      fontSize:14,
+      fontWeight:"400",
+      marginTop:5,
+      marginBottom:5
+    },  
 })
 
 
