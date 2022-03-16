@@ -3,8 +3,8 @@ import React ,{useState} from 'react'
 import TextBoxAmt from '../components/TextBoxAmt'
 import CountryFlag from 'react-native-country-flag'
 import  Icon  from 'react-native-vector-icons/FontAwesome5'
-import Stepper from '../Stepper'
-import StepperReceive from '../StepperReceive'
+import Stepper from '../components/Stepper'
+import StepperReceive from '../components/StepperReceive'
 
 const EstimateDetails = () => {
 
@@ -12,7 +12,7 @@ const EstimateDetails = () => {
   const [fees, setFees] = useState(4)
 
   return (
-    <ScrollView style={{flex:1}}>
+    <ScrollView style={{flex:1, backgroundColor:"white"}}>
 
       <View style={styles.offer}>
                 <Text style={styles.offerTitle}>New customers limited time offer!</Text>

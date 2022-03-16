@@ -23,8 +23,8 @@ import EstimateDetails from './screens/EstimateDetails';
 import HomeScreen from './screens/HomeScreen';
 import Header from './components/Header';
 import DropdownComp from './DropdownComp';
-import Stepper from './Stepper';
-import StepperReceive from './StepperReceive';
+import Stepper from './components/Stepper';
+import StepperReceive from './components/StepperReceive';
 
 export type RootStackParams = {
   Home:undefined;

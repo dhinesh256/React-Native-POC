@@ -1,11 +1,21 @@
 import React , { useState } from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View ,KeyboardAvoidingView ,TouchableWithoutFeedback} from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View ,KeyboardAvoidingView ,TouchableWithoutFeedback,SafeAreaView,
+Platform,
+StatusBar} from 'react-native'
 import {useNavigation} from '@react-navigation/core'
 import { RootStackParams } from "../App";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Header from "../components/Header";
 import ModelComp from "../components/ModalComp";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+const safeStyle = StyleSheet.create({
+    AndroidSafeArea: {
+      flex: 1,
+      backgroundColor: "white",
+      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+    }
+  });
 
 
 const HomeScreen = ()=>{
@@ -14,6 +24,7 @@ const HomeScreen = ()=>{
 
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>()
     return(
+        // <SafeAreaView style={safeStyle.AndroidSafeArea}>
         <KeyboardAvoidingView>
         <View>
             <View style={styles.homePage}>
@@ -60,6 +71,7 @@ const HomeScreen = ()=>{
             </View>
         </View>
         </KeyboardAvoidingView>
+        // </SafeAreaView>
     )
 }
 
